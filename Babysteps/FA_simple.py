@@ -12,7 +12,7 @@ x_data = torch.linspace(2, 20, 400, device=device).unsqueeze(1)
 y_data = torch.sin(3*x_data) * torch.exp(-0.4 * x_data)
 
 # Step3: Build the neural network (oh god)
-model = nn.Sequential( #simple network with 2 hidden layers (32 neurons each) and tanh function to approximate complexer funcitons
+model = nn.Sequential( #simple network with a couple hidden layers (32 neurons each) and tanh function to approximate complexer funcitons
     nn.Linear(1, 32),
     nn.Tanh(),
     nn.Linear(32, 32),
