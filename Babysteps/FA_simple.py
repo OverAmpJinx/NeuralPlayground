@@ -32,7 +32,7 @@ model = nn.Sequential( #simple network with a couple hidden layers (32 neurons e
 
 # Step4: Loss function and optimizer
 loss_func = nn.MSELoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+optimizer = torch.optim.AdamW(model.parameters(), lr=0.01) ## vielleicht da bissi rumspielen
 
 # Step5: Training loop
 for epoch in range(1000):
