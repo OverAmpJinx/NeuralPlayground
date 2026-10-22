@@ -3,7 +3,7 @@ import torch
 from torch import nn
 import matplotlib.pyplot as plt
 
-# Step1: Beginnining by checking the MPS availability
+# Step1: Beginnining by checking the MPS availability weil des fuckass macbook nervt
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 print("Using:", device)
 
@@ -14,20 +14,26 @@ y_data = torch.sin(3*x_data) * torch.exp(-0.4 * x_data)
 # Step3: Build the neural network (oh god)
 model = nn.Sequential( #simple network with a couple hidden layers (32 neurons each) and tanh function to approximate complexer funcitons
     nn.Linear(1, 32),
-    nn.Tanh(),
-    nn.Linear(32, 32),
-    nn.Tanh(),
-    nn.Linear(32, 32),
-    nn.Tanh(),
-    nn.Linear(32, 32),
-    nn.Tanh(),
-    nn.Linear(32, 32),
-    nn.Tanh(),
+    nn.ELU(),
     nn.Linear(32, 32),    # approx gets better with more layers, but not wit more neurons per layer
-    nn.Tanh(),            # accuracy scales weirdly with more layers, maybe better activation functions?
+    nn.ELU(),            # accuracy scales weirdly with more layers, maybe better activation functions? nahh tried some, ELU works wuite good
     nn.Linear(32, 32),
-    nn.Tanh(),         
-    nn.Linear(32, 1)
+    nn.ELU(),         
+    nn.Linear(32, 32),
+    nn.ELU(),
+    nn.Linear(32, 32),
+    nn.ELU(),
+    nn.Linear(32, 32),
+    nn.ELU(),
+    nn.Linear(32, 32),
+    nn.ELU(),
+    nn.Linear(32, 32),
+    nn.ELU(),
+    nn.Linear(32, 32),
+    nn.ELU(),
+    nn.Linear(32, 32),
+    nn.ELU(),
+    nn.Linear(32, 1),
     ).to(device)
 
 # Step4: Loss function and optimizer
