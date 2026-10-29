@@ -9,6 +9,7 @@ print("Using:", device)
 
 # Step2: Training data
 x_data = torch.linspace(2, 20, 400, device=device).unsqueeze(1)
+x_data2 = torch.linspace(2, 20, 200, device=device).unsqueeze(1)
 y_data = torch.sin(3*x_data) * torch.exp(-0.4 * x_data)
 
 # Step3: Build the neural network (oh god)
@@ -52,9 +53,12 @@ for epoch in range(1000):
 # Step6: Prediction and plotting
 with torch.no_grad():
     prediction1 = model(x_data)
+    prediction2 = model(x_data2)
     
 plt.plot(x_data.cpu(), y_data.cpu(), color='skyblue', label="Actual function")
 plt.plot(x_data.cpu(), prediction1.cpu(), linestyle="-.", color='red', label="Neural network")
+plt.plot(x_data2.cpu(), prediction2.cpu(), linestyle="--", color='green', label="Additional predictions")
+
 plt.legend()
 plt.grid()
 plt.title("Function Approximation with Neural Network")
